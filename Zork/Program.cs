@@ -4,14 +4,28 @@ namespace Zork
 {
     class Program
     {
-        static void Main(string[] args)
+        private static string CurrentRoom
+        {
+            get
+            {
+                return _rooms[_location.Row, _location.Column];
+            }
+        }
+
+        private static string GetCurrentRoom()
+            {
+                return _rooms[_location.Row, _location.Column];
+            }
+
+    static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Zork!");
 
             bool isRunning = true;
             while (isRunning)
             {
-                Console.Write($"{_rooms[_currentRoom]}\n> ");
+                Console.Write($"{CurrentRoom}\n> ");
+                Console.Write($"{GetCurrentRoom}\n> ");
                 string inputString = Console.ReadLine();
                 Commands command = ToCommand(inputString.Trim());
 
@@ -40,7 +54,7 @@ namespace Zork
                         {
                             outputString = "The way is shut.";
                         }
-                        
+
                         break;
 
 
@@ -58,26 +72,37 @@ namespace Zork
             return Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
         }
 
-        private static string[] _rooms = { "Forest", "West of House", "Behind House", "Clearing", "Canyon View"};
-        private static int _currentRoom = 1;
+        private static readonly string[,] _rooms =
+            {
+                { "Rocky Trail", "South of House", "Canyon View"},
+                { "Forest", "West of House", "Behind House"},
+                { "Dense Woods", "North of House", "Clearing"}
+            };
+
+        private static (int Row, int Column) _location = (1, 1);
         private static bool Move(Commands command)
         {
             bool didMove = false;
 
             switch (command)
             {
-                case Commands.NORTH:
-                case Commands.SOUTH:
-                    didMove = false;
-                    break;
-
-                case Commands.EAST when _currentRoom < _rooms.Length - 1:
-                    _currentRoom--;
+                case Commands.NORTH when _location.Row < _rooms.GetLength(0) - 1:
+                    _location.Row++;
                     didMove = true;
                     break;
 
-                case Commands.WEST when _currentRoom > 0:
-                    _currentRoom--;
+                case Commands.SOUTH when _location.Row > 0:
+                    _location.Row--;
+                    didMove = true;
+                    break;
+
+                case Commands.EAST when _location.Column < _rooms.GetLength(1) - 1:
+                    _location.Column--;
+                    didMove = true;
+                    break;
+
+                case Commands.WEST when _location.Column > 0:
+                    _location.Column--;
                     didMove = true;
                     break;
             }
