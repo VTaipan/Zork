@@ -31,7 +31,7 @@ namespace Zork
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        if(Move(command) == false)
+                        if (Move(command) == false)
                         {
                             Console.WriteLine("The way is shut!");
                         }
@@ -42,7 +42,6 @@ namespace Zork
                         Console.WriteLine("Unknown command.");
                         break;
                 }
-                InitializeRoomDescriptions();
             }
 
         }
@@ -58,9 +57,9 @@ namespace Zork
 
         private static readonly string[,] _rooms =
             {
-                { new Room("Rocky Trail"), new Room("South of House"), new Room("Canyon View")},
-                { new Room("Forest"), new Room("West of House"), new Room("Behind House")},
-                { new Room("Dense Woods"), new Room("North of House"), new Room("Clearing")}
+                { "Rocky Trail", "South of House", "Canyon View"},
+                { "Forest", "West of House", "Behind House"},
+                { "Dense Woods", "North of House", "Clearing"}
             };
 
         private static (int Row, int Column) _location = (1, 1);
@@ -81,7 +80,7 @@ namespace Zork
                     break;
 
                 case Commands.EAST when _location.Column < _rooms.GetLength(1) - 1:
-                    _location.Column--;
+                    _location.Column++;
                     didMove = true;
                     break;
 
@@ -91,21 +90,6 @@ namespace Zork
                     break;
             }
             return didMove;
-
-            private static void InitializeRoomDescriptions()
-            {
-                _rooms[0, 0] Description = "";
-                _rooms[0, 1] Description = "";
-                _rooms[0, 2] Description = "";
-
-                _rooms[1, 0] Description = "";
-                _rooms[1, 1] Description = "";
-                _rooms[1, 2] Description = "";
-
-                _rooms[2, 0] Description = "";
-                _rooms[2, 1] Description = "";
-                _rooms[2, 2] Description = "";
-            }
         }
     }
 }
