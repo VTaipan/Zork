@@ -1,47 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Zork
 {
     class Program
     {
-        private static string CurrentRoom => _rooms[_location.Row, _location.Column];
-
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Zork!");
 
-            Commands command = Commands.UNKNOWN;
-            while (command != Commands.QUIT)
+            bool isRunning = true;
+            while (isRunning)
             {
-                Console.WriteLine(CurrentRoom);
-                Console.Write("> ");
-                command = ToCommand(Console.ReadLine().Trim());
+                Console.Write($"{_rooms[_currentRoom]}\n> ");
+                string inputString = Console.ReadLine();
+                Commands command = ToCommand(inputString.Trim());
 
+                string outputString;
                 switch (command)
                 {
                     case Commands.QUIT:
+                        isRunning = false;
+                        outputString = "Thank you for playing!";
                         break;
 
 
                     case Commands.LOOK:
+                        outputString = "This is an open field west of a white house, with a boarded front door. \nA rubber mat saying 'Welcome to Zork!' lies by the door.";
                         break;
 
                     case Commands.NORTH:
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        if (Move(command) == false)
+                        if (Move(command))
                         {
-                            Console.WriteLine("The way is shut!");
+                            outputString = $"You moved {command}.";
                         }
+                        else
+                        {
+                            outputString = "The way is shut.";
+                        }
+
                         break;
 
 
                     default:
-                        Console.WriteLine("Unknown command.");
+                        outputString = "Unknown command.";
                         break;
                 }
+                Console.WriteLine(outputString);
             }
 
         }
@@ -51,44 +58,30 @@ namespace Zork
             return Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
         }
 
-        private static bool IsDirection(Commands command) => Directions.Contains(command);
-
-        private static readonly List<Commands> Directions = new List<Commands>();
-
-        private static readonly string[,] _rooms =
-            {
-                { "Rocky Trail", "South of House", "Canyon View"},
-                { "Forest", "West of House", "Behind House"},
-                { "Dense Woods", "North of House", "Clearing"}
-            };
-
-        private static (int Row, int Column) _location = (1, 1);
+        private static string[] _rooms = { "Forest", "West of House", "Behind House", "Clearing", "Canyon View" };
+        private static int _currentRoom = 1;
         private static bool Move(Commands command)
         {
             bool didMove = false;
 
             switch (command)
             {
-                case Commands.NORTH when _location.Row < _rooms.GetLength(0) - 1:
-                    _location.Row++;
+                case Commands.NORTH:
+                case Commands.SOUTH:
+                    didMove = false;
+                    break;
+
+                case Commands.EAST when _currentRoom < _rooms.Length - 1:
+                    _currentRoom++;
                     didMove = true;
                     break;
 
-                case Commands.SOUTH when _location.Row > 0:
-                    _location.Row--;
-                    didMove = true;
-                    break;
-
-                case Commands.EAST when _location.Column < _rooms.GetLength(1) - 1:
-                    _location.Column++;
-                    didMove = true;
-                    break;
-
-                case Commands.WEST when _location.Column > 0:
-                    _location.Column--;
+                case Commands.WEST when _currentRoom > 0:
+                    _currentRoom--;
                     didMove = true;
                     break;
             }
+
             return didMove;
         }
     }
