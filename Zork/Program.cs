@@ -42,6 +42,7 @@ namespace Zork
                         Console.WriteLine("Unknown command.");
                         break;
                 }
+                InitializeRoomDescriptions();
             }
 
         }
@@ -93,7 +94,17 @@ namespace Zork
 
             private static void InitializeRoomDescriptions()
             {
+                _rooms[0, 0] Description = "";
+                _rooms[0, 1] Description = "";
+                _rooms[0, 2] Description = "";
 
+                _rooms[1, 0] Description = "";
+                _rooms[1, 1] Description = "";
+                _rooms[1, 2] Description = "";
+
+                _rooms[2, 0] Description = "";
+                _rooms[2, 1] Description = "";
+                _rooms[2, 2] Description = "";
             }
         }
     }
