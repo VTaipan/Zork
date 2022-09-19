@@ -9,7 +9,7 @@ namespace Zork
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public Room(string name)
+        public Room(string name, string description)
         {
             Name = name;
         }
