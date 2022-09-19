@@ -5,7 +5,13 @@ namespace Zork
 {
     class Program
     {
-        private static string CurrentRoom => _rooms[_location.Row, _location.Column];
+        private static Room CurrentRoom
+        {
+            get
+            {
+                return _rooms[_location.Row, _location.Column];
+            }
+        }
 
         static void Main(string[] args)
         {
