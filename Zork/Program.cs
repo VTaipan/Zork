@@ -15,37 +15,55 @@ namespace Zork
 
         static void Main(string[] args)
         {
+            InitializeRoomDescriptions();
             Console.WriteLine("Welcome to Zork!");
 
-            Commands command = Commands.UNKNOWN;
-            while (command != Commands.QUIT)
+            Room previousRoom = CurrentRoom;
+            bool isRunning = true;
+            while (isRunning)
             {
                 Console.WriteLine(CurrentRoom);
-                Console.Write("> ");
-                command = ToCommand(Console.ReadLine().Trim());
-
-                switch (command)
+                if (previousRoom != CurrentRoom && CurrentRoom.HasBeenVisited == false)
                 {
-                    case Commands.QUIT:
-                        break;
+                    Console.WriteLine(CurrentRoom.Description);
+                    previousRoom = CurrentRoom;
+                    CurrentRoom.HasBeenVisited = true;
+                }
+                Console.Write("> ");
 
-                    case Commands.LOOK:
-                        Console.WriteLine(CurrentRoom.Description);
-                        break;
 
-                    case Commands.NORTH:
-                    case Commands.SOUTH:
-                    case Commands.EAST:
-                    case Commands.WEST:
-                        if (Move(command) == false)
-                        {
-                            Console.WriteLine("The way is shut!");
-                        }
-                        break;
+                Commands command = Commands.UNKNOWN;
+                while (command != Commands.QUIT)
+                {
+                    command = ToCommand(Console.ReadLine().Trim());
 
-                    default:
-                        Console.WriteLine("Unknown command.");
-                        break;
+                    switch (command)
+                    {
+                        case Commands.QUIT:
+                            isRunning = false;
+                            Console.WriteLine("Thank you for playing!");
+                            break;
+
+                        case Commands.LOOK:
+                            Console.WriteLine(CurrentRoom.Description);
+                            break;
+
+                        case Commands.NORTH:
+                        case Commands.SOUTH:
+                        case Commands.EAST:
+                        case Commands.WEST:
+                            if (Move(command) == false)
+                            {
+                                Console.WriteLine("The way is shut!");
+                            }
+                            break;
+
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            break;
+                    }
+
+                    Console.WriteLine(CurrentRoom);
                 }
             }
         }

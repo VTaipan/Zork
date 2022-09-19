@@ -9,6 +9,8 @@ namespace Zork
         public string Name { get; }
         public string Description { get; set; }
 
+        public bool HasBeenVisited;
+
         public Room(string name, string description = null)
         {
             Name = name;
