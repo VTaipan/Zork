@@ -1,0 +1,2 @@
+﻿ctrl+k ctrl+c // highlight
+ctrl+k ctrl+u uncomment highlight
