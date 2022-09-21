@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Zork
 {
-    public class Room
+    public class Room : object
     {
         public string Name { get; }
         public string Description { get; set; }
