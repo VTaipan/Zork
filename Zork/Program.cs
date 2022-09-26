@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -16,7 +17,8 @@ namespace Zork
 
         static void Main(string[] args)
         {
-            InitializeRoomDescriptions();
+            string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFileName] : defaultRoomsFilename);
+            InitializeRoomDescriptions(roomsFilename);
             Console.WriteLine("Welcome to Zork!");
 
             Room previousRoom = CurrentRoom;
@@ -76,36 +78,14 @@ namespace Zork
 
         private static void InitializeRoomDescriptions(string Filename)
         {
-            var roomMap = new Dictionary<string, Room>();
-            foreach (Room room in _rooms)
-            {
-                roomMap.Add(room.Name, room);
-            }
+            _rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
+        }
 
-            const string fieldDelimiter = "##";
-            const int expectedFieldCount = 2;
-            var roomQuery = from line in Filename.ReadLines(roomsFilename)
-                            let fields = line.Split(fieldDelimiter)
-                            where fields.Length == expectedFieldCount
-                            select (Name: fields[(int)fields.Name],
-                                    Description: fields[(int)Fields.Description]);
+        private static Room[,] _rooms;
 
-            foreach (var (Name, Description) in roomQuery)
-            {
-                roomMap[name].Description = description;
-            }
-
-        private static readonly Room[,] _rooms =
-            {
-                { new Room("Rocky Trail"), new Room ("South of House"), new Room ("Canyon View")},
-                { new Room("Forest"), new Room("West of House"), new Room("Behind House")},
-                { new Room("Dense Woods"), new Room("North of House"), new Room("Clearing")}
-            };
-
-        private enum Fields
+        private enum CommandLineArguments
         {
-            Name = 0,
-            Description = 1
+            RoomsFileName = 0
         }
 
         private static (int Row, int Column) _location = (1, 1);
