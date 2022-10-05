@@ -76,7 +76,7 @@ namespace Zork
             return Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
         }
 
-        private static void InitializeRoomDescriptions(string Filename)
+        private static void InitializeRoomDescriptions(string roomsFilename)
         {
             _rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
         }
