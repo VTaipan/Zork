@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -17,7 +16,7 @@ namespace Zork
 
         static void Main(string[] args)
         {
-            string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFileName] : defaultRoomsFilename);
+            string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFileName] : defaultRoomsFilename); //error
             InitializeRoomDescriptions(roomsFilename);
             Console.WriteLine("Welcome to Zork!");
 
