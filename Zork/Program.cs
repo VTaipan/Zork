@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -16,9 +16,9 @@ namespace Zork
 
         static void Main(string[] args)
         {
-            const string defaultRoomsFilename = "Rooms.txt";
+            const string defaultRoomsFilename = "Rooms.Json";
             string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFileName] : defaultRoomsFilename);
-            InitializeRoomDescriptions(roomsFilename);
+            InitializeRooms(roomsFilename);
             Console.WriteLine("Welcome to Zork!");
 
             Room previousRoom = CurrentRoom;
@@ -71,54 +71,17 @@ namespace Zork
             }
         }
 
-        private static readonly Dictionary<string, Room> RoomMap;
-        static Program()
-        {
-            RoomMap = new Dictionary<string, Room>();
-            foreach (Room room in _rooms)
-            {
-                RoomMap[room.Name] = room;
-            }
-        }
-        private static void InitializeRoomDescriptions(string roomsFilename)
-        {
-            const string fieldDelimiter = "##";
-            const int expectedFieldCount = 2;
-
-            string[] lines = File.ReadAllLines(roomsFilename);
-            foreach (string line in lines)
-            {
-                string[] fields = line.Split(fieldDelimiter);
-                if (fields.Length != expectedFieldCount)
-                {
-                    throw new InvalidDataException("Invalid record.");
-                }
-
-                string name = fields[(int)Fields.Name];
-                string description = fields[(int)Fields.Description];
-
-                RoomMap[name].Description = description;
-            }
-        }
-
-        private enum Fields
-        {
-            Name,
-            Description
-        }
-
-        private static readonly Room[,] _rooms =
-            {
-                { new Room("Rocky Trail"), new Room ("South of House"), new Room ("Canyon View")},
-                { new Room("Forest"), new Room("West of House"), new Room("Behind House")},
-                { new Room("Dense Woods"), new Room("North of House"), new Room("Clearing")}
-            };
-
-
         private static Commands ToCommand(string commandString)
         {
             return Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
         }
+
+        private static void InitializeRooms(string roomsFilename)
+        {
+            _rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
+        }
+
+        private static Room[,] _rooms;
 
         private enum CommandLineArguments
         {
