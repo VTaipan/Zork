@@ -1,103 +1,75 @@
 ﻿using System;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Zork
 {
     public class Game
     {
-        public World World { get; }
-    }
+        public World World { get; private set; }
+  
+        [JsonIgnore]
+        public Player Player { get; private set; }
 
-    public Player Player { get; }
-    public Game (World world, string startingLocation)
-    {
-        World = world;
-        Player = new Player(World, startingLocation);
-    }
+        [JsonIgnore]
+        private bool IsRunning { get; set; }
 
-    private Commands ToCommand(string commandString)
-    {
-        return Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
-    }
-
-    private bool Move(Commands command)
-    {
-        bool didMove = false;
-
-        switch (command)
+        public Game (World world, Player player)
         {
-            case Commands.NORTH when _location.Row < _world.Rooms.GetLength(0) - 1:
-                _location.Row++;
-                didMove = true;
-                break;
-
-            case Commands.SOUTH when _location.Row > 0:
-                _location.Row--;
-                didMove = true;
-                break;
-
-            case Commands.EAST when _location.Column < _world.Rooms.GetLength(1) - 1:
-                _location.Column++;
-                didMove = true;
-                break;
-
-            case Commands.WEST when _location.Column > 0:
-                _location.Column--;
-                didMove = true;
-                break;
+            World = world;
+            Player = player;
         }
-        return didMove;
-    }
 
-    public Run()
-    {
-        Room previousRoom = CurrentRoom;
-        bool isRunning = true;
-        while (isRunning)
+       public void Run()
         {
-            Console.WriteLine(CurrentRoom);
-            if (previousRoom != CurrentRoom && CurrentRoom.HasBeenVisited == false)
+            IsRunning = true;
+            Room previousRoom = null;
+            while (IsRunning)
             {
-                Console.WriteLine(CurrentRoom.Description);
-                previousRoom = CurrentRoom;
-                CurrentRoom.HasBeenVisited = true;
+                Console.WriteLine(Player.Location);
+                if (previousRoom != Player.Location)
+                {
+                    Console.WriteLine(Player.Location.Description);
+                    previousRoom = Player.Location;
+                }
+                
+                Console.Write("\n> ");
+                Commands command = ToCommand(Console.ReadLine().Trim());
+
+                switch (command)
+                {
+                    case Commands.QUIT:
+                        IsRunning = false;
+                        break;
+
+                    case Commands.LOOK:
+                        Console.WriteLine(Player.Location.Description);
+                        break;
+
+                    case Commands.NORTH:
+                    case Commands.SOUTH:
+                    case Commands.EAST:
+                    case Commands.WEST:
+                        Directions direction = Enum.Parse<Directions>(command.ToString(), true);
+                        if (Player.Move(direction) == false)
+                        {
+                            Console.WriteLine("The way is shut!");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Unknown command.");
+                        break;
+                }
             }
-            Console.Write("> ");
         }
-    }
-
-
-        Commands command = Commands.UNKNOWN;
-        while (command != Commands.QUIT)
+        public static Game Load(string filename)
         {
-            command = ToCommand(Console.ReadLine().Trim());
+            Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(filename));
+            game.Player = game.World.SpawnPlayer();
 
-            switch (command)
-            {
-                case Commands.QUIT:
-                    isRunning = false;
-                    Console.WriteLine("Thank you for playing!");
-                    break;
-
-                case Commands.LOOK:
-                    Console.WriteLine(CurrentRoom.Description);
-                    break;
-
-                case Commands.NORTH:
-                case Commands.SOUTH:
-                case Commands.EAST:
-                case Commands.WEST:
-                    if (Move(command) == false)
-                    {
-                        Console.WriteLine("The way is shut!");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Unknown command.");
-                    break;
-            }
-
-            Console.WriteLine(CurrentRoom);
+            return game;
         }
+        private static Commands ToCommand(string commandString) => Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -8,9 +6,9 @@ namespace Zork
     {
         static void Main(string[] args)
         {
-            const string defaultRoomsFilename = @"Content\Game.json";
-            string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.GameFileName] : defaultRoomsFilename);
-            Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(@"Content\Game.json"));
+            const string defaultGameFilename = @"Content\Game.json";
+            string gameFilename = (args.Length > 0 ? args[(int)CommandLineArguments.GameFileName] : defaultGameFilename);
+            Game game = Game.Load(gameFilename);
             
             Console.WriteLine("Welcome to Zork!");
             game.Run();
