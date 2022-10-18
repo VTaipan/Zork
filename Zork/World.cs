@@ -15,7 +15,7 @@ namespace Zork
         public Player SpawnPlayer() => new Player(this, StartingLocation);
 
         [OnDeserialized]
-        private void OnDeserialized(StreamingContext streamingContext)
+        private void OnDeserialized(StreamingContext context)
         {
             _RoomsByName = Rooms.ToDictionary(room => room.Name, room => room);
             foreach (Room room in Rooms)

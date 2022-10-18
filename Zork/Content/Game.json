@@ -72,18 +72,3 @@
     ]
   }
 }
-
-//{
-//        "Name": "Rocky Trail",
-//        "Description": "You are facing a rock-strewn trail.",
-//        "Neighbors": {
-
-//        }
-//      },
-//      {
-//        "Name": "Canyon View",
-//        "Description": "You are at the top of the Great Canyon on its south wall.",
-//        "Neighbors": {
-
-//        }
-//      },

@@ -32,7 +32,7 @@ namespace Zork
             return lhs.Name == rhs.Name;
         }
 
-        public static bool operator !=(Room lhs, Room rhs) => (lhs == rhs);
+        public static bool operator !=(Room lhs, Room rhs) => !(lhs == rhs);
 
         public override bool Equals(object obj) => obj is Room room ? this == room : false;
 

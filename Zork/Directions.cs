@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Zork
+﻿namespace Zork
 {
     public enum Directions
     {
@@ -10,7 +6,5 @@ namespace Zork
         South,
         East,
         West,
-        Up,
-        Down
     }
 }
