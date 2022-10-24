@@ -53,6 +53,27 @@ namespace Zork
 
         public override string ToString() => Name;
 
+
+        public void UpdateNeighbors(World world)
+        {
+            Neighbors = new Dictionary<Directions, Room>();
+            foreach (var neighborName in NeighborNames)
+            {
+                Neighbors.Add(neighborName.Key, world.RoomsByName[neighborName.Value]);
+            }
+
+            NeigborNames = null;
+        }
+
+        public void UpdateInventory(World world)
+        {
+            Inventory = new List<Item>();
+            foreach (var inventoryName in InventoryNames)
+            {
+                Inventory.Add(world.ItemsByName[inventoryName]);
+            }
+        }
+
         public override int GetHashCode() => Name.GetHashCode();
 
         public void UpdateNeighbors(World world) => Neighbors =
