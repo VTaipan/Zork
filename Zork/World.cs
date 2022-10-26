@@ -10,9 +10,9 @@ namespace Zork
     {
         public HashSet<Room> Rooms { get; set; }
 
-        public Item[] Items { get; }
+        public List<Item> Items { get; }
 
-        public World(Item[] items)
+        public World(List<Item> items)
         {
             Items = items;
             ItemsByName = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
