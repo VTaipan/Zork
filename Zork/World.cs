@@ -16,9 +16,9 @@ namespace Zork
         {
             Items = items;
             ItemsByName = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
-            foreach()
+            foreach(Item item in Items)
             {
-
+                ItemsByName.Add(item.Name, item);
             }
         }
 
@@ -37,6 +37,7 @@ namespace Zork
             foreach (Room room in Rooms)
             {
                 room.UpdateNeighbors(this);
+                room.UpdateInventory(this);
             }
         }
 

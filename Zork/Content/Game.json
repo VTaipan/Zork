@@ -2,7 +2,14 @@
   "World": {
     "StartingLocation": "West of House",
     "Items": [
-
+      {
+        "Name": "Welcome Mat",
+        "Description": "A rubber mat wiht the words 'Welcome to Zork!' written on it."
+      },
+      {
+        "Name": "Mailbox",
+        "Description": "A small mailbox."
+      }
     ],
     "Rooms": [
       {
@@ -13,15 +20,9 @@
           "South": "South of House",
           "West": "Forest 1"
         },
-        "Inventory": [
-          {
-            "Name": "Welcome Mat",
-            "Description": "A rubber mat wiht the words 'Welcome to Zork!' written on it."
-          },
-          {
-            "Name": "Mailbox",
-            "Description":  "A small mailbox."
-          }
+        "InventoryNames": [
+          "Welcome Mat",
+          "Mailbox"
         ]
       },
       {
@@ -31,7 +32,9 @@
           "North": "Forest 2",
           "East": "Behind House",
           "West": "West of House"
-        }
+        },
+        "InventoryNames": [
+        ]
       },
       {
         "Name": "South of House",

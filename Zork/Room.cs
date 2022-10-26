@@ -19,8 +19,10 @@ namespace Zork
         [JsonIgnore]
         public IReadOnlyDictionary<Directions, Room> Neighbors { get; private set; }
 
-        public List<Item> Inventory { get; }
+        [JsonIgnore]
+        public List<Item> Inventory { get; private set;  }
 
+        [JsonProperty]
         private string[] InventoryNames { get; set; }
 
         public Room(List<Item> inventory, string name, string description, Dictionary<Directions, string> neighbors, string[] inventoryNames)
@@ -28,7 +30,6 @@ namespace Zork
             Name = name;
             Description = description;
             NeighborNames = neighbors ?? new Dictionary<Directions, string>();
-            Inventory = inventory ?? new List<Item>();
             InventoryNames = inventoryNames ?? new string[0];
         }
 
@@ -53,18 +54,6 @@ namespace Zork
 
         public override string ToString() => Name;
 
-
-        public void UpdateNeighbors(World world)
-        {
-            Neighbors = new Dictionary<Directions, Room>();
-            foreach (var neighborName in NeighborNames)
-            {
-                Neighbors.Add(neighborName.Key, world.RoomsByName[neighborName.Value]);
-            }
-
-            NeigborNames = null;
-        }
-
         public void UpdateInventory(World world)
         {
             Inventory = new List<Item>();
@@ -72,6 +61,8 @@ namespace Zork
             {
                 Inventory.Add(world.ItemsByName[inventoryName]);
             }
+            
+            InventoryNames = null;
         }
 
         public override int GetHashCode() => Name.GetHashCode();
