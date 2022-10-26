@@ -1,6 +1,9 @@
-﻿namespace Zork.Common
+﻿using System;
+
+namespace Zork.Common
 {
-    internal interface IInputService
+    public interface IInputService
     {
+        event EventHandler<string> InputReceived;
     }
 }
