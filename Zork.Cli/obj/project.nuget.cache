@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ehDSVcN4fcrgdTBkYLeDdgsrzynB9fhLUslA0Qte2+AIO8QyenJT/uUl8NvgVzAKjI9rcTm7SqtBYe3dFW20eQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\Zork.Cli.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ka081051\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\ka081051\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512"
+  ],
+  "logs": []
+}

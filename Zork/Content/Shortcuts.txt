@@ -1,6 +1,0 @@
-﻿ctrl+k ctrl+c // highlight
-ctrl+k ctrl+u uncomment highlight
-
-F9 breakpoint
-F10 step over
-F11 step in
