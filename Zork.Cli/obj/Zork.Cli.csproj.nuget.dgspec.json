@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\Zork.Cli.csproj": {}
+    "C:\\School\\DIG_4778\\Zork\\Zork.Cli\\Zork.Cli.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\Zork.Cli.csproj": {
+    "C:\\School\\DIG_4778\\Zork\\Zork.Cli\\Zork.Cli.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\Zork.Cli.csproj",
+        "projectUniqueName": "C:\\School\\DIG_4778\\Zork\\Zork.Cli\\Zork.Cli.csproj",
         "projectName": "Zork.Cli",
-        "projectPath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\Zork.Cli.csproj",
-        "packagesPath": "C:\\Users\\ka081051\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\obj\\",
+        "projectPath": "C:\\School\\DIG_4778\\Zork\\Zork.Cli\\Zork.Cli.csproj",
+        "packagesPath": "C:\\Users\\kwils\\.nuget\\packages\\",
+        "outputPath": "C:\\School\\DIG_4778\\Zork\\Zork.Cli\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ka081051\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kwils\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Common\\Zork.Common.csproj": {
-                "projectPath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Common\\Zork.Common.csproj"
+              "C:\\School\\DIG_4778\\Zork\\Zork.Common\\Zork.Common.csproj": {
+                "projectPath": "C:\\School\\DIG_4778\\Zork\\Zork.Common\\Zork.Common.csproj"
               }
             }
           }
@@ -81,21 +79,20 @@
         }
       }
     },
-    "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Common\\Zork.Common.csproj": {
+    "C:\\School\\DIG_4778\\Zork\\Zork.Common\\Zork.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Common\\Zork.Common.csproj",
+        "projectUniqueName": "C:\\School\\DIG_4778\\Zork\\Zork.Common\\Zork.Common.csproj",
         "projectName": "Zork.Common",
-        "projectPath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Common\\Zork.Common.csproj",
-        "packagesPath": "C:\\Users\\ka081051\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Common\\obj\\",
+        "projectPath": "C:\\School\\DIG_4778\\Zork\\Zork.Common\\Zork.Common.csproj",
+        "packagesPath": "C:\\Users\\kwils\\.nuget\\packages\\",
+        "outputPath": "C:\\School\\DIG_4778\\Zork\\Zork.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ka081051\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kwils\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -104,7 +101,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

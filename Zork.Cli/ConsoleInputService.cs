@@ -11,7 +11,8 @@ namespace Zork.Cli
 
         public void ProcessInput()
         {
-            string inputString = Console.ReadLine()
+            string inputString = Console.ReadLine().Trim();
+            InputReceived?.Invoke(this, inputString);
         }
     }
 }

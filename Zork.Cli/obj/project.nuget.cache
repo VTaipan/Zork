@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ehDSVcN4fcrgdTBkYLeDdgsrzynB9fhLUslA0Qte2+AIO8QyenJT/uUl8NvgVzAKjI9rcTm7SqtBYe3dFW20eQ==",
+  "dgSpecHash": "sb2iU6+0S0KNu5p8UOKgoj7sMk5gvrKPd83pBQ1y0haPl0hw3kJoKvNkNSAjqdiDzvxjz/5p7l6IAhEcLeXJDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ka081051\\source\\repos\\Zork\\Zork\\Zork.Cli\\Zork.Cli.csproj",
+  "projectFilePath": "C:\\School\\DIG_4778\\Zork\\Zork.Cli\\Zork.Cli.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ka081051\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\ka081051\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512"
+    "C:\\Users\\kwils\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\kwils\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512"
   ],
   "logs": []
 }
