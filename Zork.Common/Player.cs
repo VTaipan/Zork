@@ -21,9 +21,10 @@ namespace Zork.Common
 
             set
             {
-                if ()
+                if (_moves != value)
                 {
-
+                    _moves = value;
+                    MovesChanged?.Invoke(this, _moves);
                 }
             }
         }

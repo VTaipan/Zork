@@ -5,7 +5,7 @@ using Zork.Common;
 
 namespace Zork.Cli
 {
-    internal interface ConsoleInputService : IInputService
+    internal class ConsoleInputService : IInputService
     {
         public event EventHandler<string> InputReceived;
 

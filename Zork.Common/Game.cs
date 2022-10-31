@@ -66,6 +66,10 @@ namespace Zork.Common
 
                     case Commands.Look:
                         outputString = Player.CurrentRoom.Description;
+                        foreach (Item item in Player.CurrentRoom.Inventory)
+                        {
+                            outputString = item.Name;
+                        }
                         break;
 
                     case Commands.North:
@@ -85,22 +89,34 @@ namespace Zork.Common
 
                     case Commands.Take:
                         //TODO
+                        if (subject is null)
+                        {
+                            outputString = "You can not see any such thing";
+                        }
                         outputString = null;
                         break;
 
                     case Commands.Drop:
                         //TODO
+                        if (subject is null)
+                        {
+                            outputString = "You can not see any such thing";
+                        }
                         outputString = null;
                         break;
 
                     case Commands.Inventory:
-                        //TODO
                         outputString = null;
                         break;
 
                     default:
                         outputString = "Unknown command.";
                         break;
+                }
+                
+                if(command != Commands.Unknown)
+                {
+                    Player.Moves++;
                 }
 
                 Output.WriteLine(outputString);
