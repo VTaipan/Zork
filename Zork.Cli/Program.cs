@@ -19,7 +19,7 @@ namespace Zork.Cli
             game.Player.MovesChanged += Player_MovesChanged;
 
             Console.WriteLine("Welcome to Zork!");
-            game.Run(output);
+            game.Run(input, output);
             Console.WriteLine("Finished.");
         }
 

@@ -10,15 +10,19 @@ namespace Zork.Common
 
         public IOutputService Output { get; private set; }
 
+        public bool IsRunning { get; private set; }
+        public IInputService Input { get; private set; }
+
         public Game(World world, string startingLocation)
         {
             World = world;
             Player = new Player(World, startingLocation);
         }
 
-        public void Run(IOutputService output)
+        public void Run(IInputService input, IOutputService output)
         {
             Output = output;
+            Input = input;
 
             Room previousRoom = null;
             bool isRunning = true;
@@ -47,7 +51,6 @@ namespace Zork.Common
                 else if (commandTokens.Length == 1)
                 {
                     verb = commandTokens[0];
-
                 }
                 else
                 {
@@ -89,7 +92,12 @@ namespace Zork.Common
 
                     case Commands.Take:
                         //TODO
-                        if (subject is null)
+                        //foreach (Item item in )
+                        //{
+                        //   .Remove from room inv
+                        //   .Add to player inv
+                        //}
+                        if (subject == null)
                         {
                             outputString = "You can not see any such thing";
                         }
@@ -98,7 +106,12 @@ namespace Zork.Common
 
                     case Commands.Drop:
                         //TODO
-                        if (subject is null)
+                        //foreach(Item item in )
+                        //{
+                        //   .Remove from player inv
+                        //   .Add to room inv
+                        //}
+                        if (subject == null)
                         {
                             outputString = "You can not see any such thing";
                         }
@@ -106,6 +119,10 @@ namespace Zork.Common
                         break;
 
                     case Commands.Inventory:
+                        foreach(Item items in Player.Inventory)
+                        {
+                            outputString = $"";
+                        }
                         outputString = null;
                         break;
 

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mamG2NJePqubaPQneb3LTnKt2lOWId5p24mK5QYymmjG9+ZCNQrWRbVpv95KbUVt+mjJVdYGWT07dGws/tjLWg==",
+  "dgSpecHash": "Hyb0sryMDTz0TwqVz8+8wPNSfJdU0N7ejpLtnQ8lyfFx/zaeUtX88hur2JnJGPpSGqMVxjpqD8+cQBDBhLFRUA==",
   "success": true,
-  "projectFilePath": "C:\\School\\DIG_4778\\Zork\\Zork.Common\\Zork.Common.csproj",
+  "projectFilePath": "C:\\Users\\ka081051\\source\\repos\\GitHub\\Zork\\Zork.Common\\Zork.Common.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kwils\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\ka081051\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
