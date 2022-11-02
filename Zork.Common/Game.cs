@@ -71,7 +71,7 @@ namespace Zork.Common
                         outputString = Player.CurrentRoom.Description; //not writing description
                         foreach (Item item in Player.CurrentRoom.Inventory)
                         {
-                            outputString = item.LookDescription; //not writing all items in room
+                            outputString = item.LookDescription; //not writing all items in room, only first in json
                         }
                         break;
 
@@ -110,7 +110,7 @@ namespace Zork.Common
                         {
                             Player.CurrentRoom.Inventory.Remove(itemToTake);
                             Player.Inventory.Add(itemToTake);
-                            outputString = $"You have taken the {itemToTake}.";
+                            outputString = $"You have taken the {itemToTake}."; //itemToTake writes Zork.Common.Item
                         }
                         break;
 
@@ -133,7 +133,7 @@ namespace Zork.Common
                             {
                                 Player.CurrentRoom.Inventory.Add(itemToDrop);
                                 Player.Inventory.Remove(itemToDrop);
-                                outputString = $"You have dropped the {itemToDrop}."; //not writing
+                                outputString = $"You have dropped the {itemToDrop}."; //not executing
                             }
                         }
                         outputString = null;
@@ -143,7 +143,7 @@ namespace Zork.Common
                         //TODO
                         foreach(Item item in Player.Inventory)
                         {
-                            if (Player.Inventory.Count != 0)
+                            if (Player.Inventory.Count != 0) //not executing
                             {
                                 outputString = item.LookDescription; //implement InventoryDescription here and add them to json 
                             }
