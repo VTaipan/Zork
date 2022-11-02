@@ -31,7 +31,7 @@ namespace Zork.Common
                 Output.WriteLine(Player.CurrentRoom);
                 if (previousRoom != Player.CurrentRoom)
                 {
-                    Output.WriteLine(Player.CurrentRoom.Description);
+                    Output.WriteLine(Player.CurrentRoom.Description); //not giving description anymore
                     previousRoom = Player.CurrentRoom;
                 }
 
@@ -67,10 +67,11 @@ namespace Zork.Common
                         break;
 
                     case Commands.Look:
-                        outputString = Player.CurrentRoom.Description;
+                        //TODO
+                        outputString = Player.CurrentRoom.Description; //not writing description
                         foreach (Item item in Player.CurrentRoom.Inventory)
                         {
-                            outputString = $"{item.Name}\n{item.LookDescription}";
+                            outputString = item.LookDescription; //not writing all items in room
                         }
                         break;
 
@@ -91,44 +92,66 @@ namespace Zork.Common
 
                     case Commands.Take:
                         //TODO
+                        Item itemToTake = null;
                         foreach (Item item in Player.CurrentRoom.Inventory)
                         {
                             if (string.Compare(item.Name, subject, ignoreCase: true) == 0)
                             {
-                                Player.CurrentRoom.Inventory.Remove(item);
-                                Player.Inventory.Add(item);
-                            }
-                                
-                            else
-                            {
-                                outputString = "You can not see any such thing";
-                            }
-                        }                       
-                        outputString = null;
+                                itemToTake = item;
+                                break; 
+                            }   
+                        }
+
+                        if (itemToTake == null)
+                        {
+                            outputString = "You can not see any such thing";
+                        }
+                        else
+                        {
+                            Player.CurrentRoom.Inventory.Remove(itemToTake);
+                            Player.Inventory.Add(itemToTake);
+                            outputString = $"You have taken the {itemToTake}.";
+                        }
                         break;
 
                     case Commands.Drop:
                         //TODO
+                        Item itemToDrop = null;
                         foreach (Item item in Player.Inventory)
                         {
                             if (string.Compare(item.Name, subject, ignoreCase: true) == 0)
                             {
-                                Player.CurrentRoom.Inventory.Add(item);
-                                Player.Inventory.Remove(item);
+                                itemToDrop = item;
+                                break;
                             }
 
-                            else
+                            if(itemToDrop == null)
                             {
                                 outputString = "You can not see any such thing";
+                            }
+                            else
+                            {
+                                Player.CurrentRoom.Inventory.Add(itemToDrop);
+                                Player.Inventory.Remove(itemToDrop);
+                                outputString = $"You have dropped the {itemToDrop}."; //not writing
                             }
                         }
                         outputString = null;
                         break;
 
                     case Commands.Inventory:
-                        foreach(Item items in Player.CurrentRoom.Inventory)
+                        //TODO
+                        foreach(Item item in Player.Inventory)
                         {
-                            outputString = $"";
+                            if (Player.Inventory.Count != 0)
+                            {
+                                outputString = item.LookDescription; //implement InventoryDescription here and add them to json 
+                            }
+
+                            else
+                            {
+                                outputString = "You are empty handed.";
+                            }
                         }
                         outputString = null;
                         break;
