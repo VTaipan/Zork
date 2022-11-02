@@ -38,7 +38,6 @@ namespace Zork.Common
                 Output.Write("> ");
 
                 string inputString = Console.ReadLine().Trim();
-                // might look like:  "LOOK", "TAKE MAT", "QUIT"
                 char  separator = ' ';
                 string[] commandTokens = inputString.Split(separator);
                 
@@ -71,7 +70,7 @@ namespace Zork.Common
                         outputString = Player.CurrentRoom.Description;
                         foreach (Item item in Player.CurrentRoom.Inventory)
                         {
-                            outputString = item.Name;
+                            outputString = $"{item.Name}\n{item.LookDescription}";
                         }
                         break;
 
@@ -92,34 +91,42 @@ namespace Zork.Common
 
                     case Commands.Take:
                         //TODO
-                        //foreach (Item item in )
-                        //{
-                        //   .Remove from room inv
-                        //   .Add to player inv
-                        //}
-                        if (subject == null)
+                        foreach (Item item in Player.CurrentRoom.Inventory)
                         {
-                            outputString = "You can not see any such thing";
-                        }
+                            if (string.Compare(item.Name, subject, ignoreCase: true) == 0)
+                            {
+                                Player.CurrentRoom.Inventory.Remove(item);
+                                Player.Inventory.Add(item);
+                            }
+                                
+                            else
+                            {
+                                outputString = "You can not see any such thing";
+                            }
+                        }                       
                         outputString = null;
                         break;
 
                     case Commands.Drop:
                         //TODO
-                        //foreach(Item item in )
-                        //{
-                        //   .Remove from player inv
-                        //   .Add to room inv
-                        //}
-                        if (subject == null)
+                        foreach (Item item in Player.Inventory)
                         {
-                            outputString = "You can not see any such thing";
+                            if (string.Compare(item.Name, subject, ignoreCase: true) == 0)
+                            {
+                                Player.CurrentRoom.Inventory.Add(item);
+                                Player.Inventory.Remove(item);
+                            }
+
+                            else
+                            {
+                                outputString = "You can not see any such thing";
+                            }
                         }
                         outputString = null;
                         break;
 
                     case Commands.Inventory:
-                        foreach(Item items in Player.Inventory)
+                        foreach(Item items in Player.CurrentRoom.Inventory)
                         {
                             outputString = $"";
                         }

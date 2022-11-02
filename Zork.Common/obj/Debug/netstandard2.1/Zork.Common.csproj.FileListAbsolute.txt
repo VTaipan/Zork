@@ -18,3 +18,13 @@ C:\Users\ka081051\source\repos\GitHub\Zork\Zork.Common\obj\Debug\netstandard2.1\
 C:\Users\ka081051\source\repos\GitHub\Zork\Zork.Common\bin\Debug\netstandard2.1\Zork.Common.deps.json
 C:\Users\ka081051\source\repos\GitHub\Zork\Zork.Common\bin\Debug\netstandard2.1\Zork.Common.dll
 C:\Users\ka081051\source\repos\GitHub\Zork\Zork.Common\bin\Debug\netstandard2.1\Zork.Common.pdb
+C:\School\DIG_4778\Zork\Zork.Common\bin\Debug\netstandard2.1\Zork.Common.deps.json
+C:\School\DIG_4778\Zork\Zork.Common\bin\Debug\netstandard2.1\Zork.Common.dll
+C:\School\DIG_4778\Zork\Zork.Common\bin\Debug\netstandard2.1\Zork.Common.pdb
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.csproj.AssemblyReference.cache
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.AssemblyInfoInputs.cache
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.AssemblyInfo.cs
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.csproj.CoreCompileInputs.cache
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.dll
+C:\School\DIG_4778\Zork\Zork.Common\obj\Debug\netstandard2.1\Zork.Common.pdb

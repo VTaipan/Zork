@@ -29,15 +29,15 @@ namespace Zork.Common
             InventoryNames = inventoryNames ?? new string[0];
         }
 
-        void AddToInventory(Item itemToAdd)
-        {
+        //void AddToInventory(Item itemToAdd)
+        //{
 
-        }
+        //}
 
-        void RemoveFromInventory(Item itemToAdd)
-        {
+        //void RemoveFromInventory(Item itemToAdd)
+        //{
 
-        }
+        //}
 
         public static bool operator ==(Room lhs, Room rhs)
         {
