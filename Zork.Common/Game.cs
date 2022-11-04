@@ -34,9 +34,28 @@ namespace Zork.Common
         private void Input_InputReceived(object sender, string inputString)
         {
             Room previousRoom = Player.CurrentRoom;
-            Commands command = ToCommand(inputString);
-            string outputString;
+            string outputString = null;
+
+            char separator = ' ';
+            string[] commandTokens = inputString.Split(separator);
+            string verb = null;
             string subject = null;
+
+            if (commandTokens.Length == 0)
+            {
+                return;
+            }
+            else if (commandTokens.Length == 1)
+            {
+                verb = commandTokens[0];
+            }
+            else
+            {
+                verb = commandTokens[0];
+                subject = commandTokens[1];
+            }
+
+            Commands command = ToCommand(verb);
 
             switch (command)
             {
@@ -46,13 +65,7 @@ namespace Zork.Common
                     break;
 
                 case Commands.Look:
-                    Output.WriteLine(Player.CurrentRoom.LookDescription);                   
-                    
-                    foreach (Item item in Player.CurrentRoom.Inventory)
-                    {
-                        Output.WriteLine(item.LookDescription);
-                    }
-                    outputString = null;
+                    Look();
                     break;
 
                 case Commands.North:
@@ -72,36 +85,6 @@ namespace Zork.Common
 
                 case Commands.Take:
                     //TODO
-
-                    //while(IsRunning)
-                    //{
-                    //    char separator = ' ';
-                    //    string[] commandTokens = inputString.Split(separator);
-
-                    //    string verb = null;
-                    //    if (commandTokens.Length == 0)
-                    //    {
-                    //        continue;
-                    //    }
-                    //    else if (commandTokens.Length == 1)
-                    //    {
-                    //        verb = commandTokens[0];
-                    //    }
-                    //    else
-                    //    {
-                    //        verb = commandTokens[0];
-                    //        subject = commandTokens[1];
-                    //    }
-                    //}
-
-                    //const string fieldDelimiter = " ";
-                    //const int expectedFieldCount = 2;
-                    //var takeCommand = from item in Player.CurrentRoom.Inventory
-                    //                  let fields = item.Split(fieldDelimiter)
-                    //                  where fields.Length == expectedFieldCount
-                    //                  select ();
-
-
                     Item itemToTake = null;
                     foreach (Item item in Player.CurrentRoom.Inventory)
                     {
@@ -125,7 +108,7 @@ namespace Zork.Common
                     break;
 
                 case Commands.Drop:
-                    //TODO
+                    //Find an item in the player inventory that matches the subject
                     Item itemToDrop = null;
                     foreach (Item item in Player.Inventory)
                     {
@@ -134,56 +117,66 @@ namespace Zork.Common
                             itemToDrop = item;
                             break;
                         }
-
-                        if (itemToDrop == null)
-                        {
-                            outputString = "You can not see any such thing";
-                        }
-                        else
-                        {
-                            Player.CurrentRoom.Inventory.Add(itemToDrop);
-                            Player.Inventory.Remove(itemToDrop);
-                            outputString = $"You have dropped the {itemToDrop}."; //not executing
-                        }
                     }
-                    outputString = null;
+
+                    if (itemToDrop == null)
+                    {
+                        outputString = "You can not see any such thing"; // not executing
+                    }
+                    else
+                    {
+                        Player.CurrentRoom.Inventory.Add(itemToDrop);
+                        Player.Inventory.Remove(itemToDrop);
+                        outputString = $"You have dropped the {itemToDrop}."; //not executing
+                    }
                     break;
 
                 case Commands.Inventory:
                     //TODO
-                    foreach (Item item in Player.Inventory)
+                    if (Player.Inventory.Count > 0) //not executing
                     {
-                        if (Player.Inventory.Count != 0) //not executing
+                        outputString = $"You are carying:\n"; //implement InventoryDescription here and add them to json 
+                        foreach (Item item in Player.Inventory)
                         {
-                            outputString = item.LookDescription; //implement InventoryDescription here and add them to json 
-                        }
-
-                        else
-                        {
-                            outputString = "You are empty handed.";
+                            outputString += $"{item.LookDescription}\n";
                         }
                     }
-                    outputString = null;
+
+                    else
+                    {
+                        outputString = "You are empty handed.";
+                    }
                     break;
 
                 default:
                     outputString = "Unknown command.";
                     break;
             }
-
-            if(previousRoom != Player.CurrentRoom)
+            
+            if (outputString != null)
             {
-                Output.WriteLine(outputString = Player.CurrentRoom.LookDescription);
+                Output.WriteLine(outputString);
+            }
+
+            if (previousRoom != Player.CurrentRoom)
+            {
+                Look();
             }
 
             if (command != Commands.Unknown)
             {
                 Player.Moves++;
             }
-
-            Output.WriteLine(outputString);
         }
 
+        private void Look()
+        {
+            Output.WriteLine(Player.CurrentRoom.LookDescription);
+            foreach(Item item in Player.CurrentRoom.Inventory)
+            {
+                Output.WriteLine(item.LookDescription);
+            }
+        }
         private static Commands ToCommand(string commandString) => Enum.TryParse(commandString, true, out Commands result) ? result : Commands.Unknown;
     }
 }

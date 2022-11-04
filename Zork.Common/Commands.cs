@@ -3,6 +3,7 @@
     public enum Commands
     {
         Quit,
+        q = Quit,
         Look,
         l = Look,
         North,

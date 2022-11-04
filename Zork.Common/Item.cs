@@ -14,5 +14,7 @@
             LookDescription = lookDescription;
             InventoryDescription = inventoryDescription;
         }
+
+        public override string ToString() => Name;
     }
 }
