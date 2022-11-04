@@ -84,7 +84,6 @@ namespace Zork.Common
                     break;
 
                 case Commands.Take:
-                    //TODO
                     Item itemToTake = null;
                     foreach (Item item in Player.CurrentRoom.Inventory)
                     {
@@ -103,7 +102,7 @@ namespace Zork.Common
                     {
                         Player.CurrentRoom.Inventory.Remove(itemToTake);
                         Player.Inventory.Add(itemToTake);
-                        outputString = $"You have taken the {itemToTake}."; //itemToTake writes Zork.Common.Item
+                        outputString = $"You have taken the {itemToTake}.";
                     }
                     break;
 
@@ -121,19 +120,18 @@ namespace Zork.Common
 
                     if (itemToDrop == null)
                     {
-                        outputString = "You can not see any such thing"; // not executing
+                        outputString = "You can not see any such thing";
                     }
                     else
                     {
                         Player.CurrentRoom.Inventory.Add(itemToDrop);
                         Player.Inventory.Remove(itemToDrop);
-                        outputString = $"You have dropped the {itemToDrop}."; //not executing
+                        outputString = $"You have dropped the {itemToDrop}.";
                     }
                     break;
 
                 case Commands.Inventory:
-                    //TODO
-                    if (Player.Inventory.Count > 0) //not executing
+                    if (Player.Inventory.Count > 0)
                     {
                         outputString = $"You are carying:\n"; //implement InventoryDescription here and add them to json 
                         foreach (Item item in Player.Inventory)
