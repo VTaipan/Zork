@@ -7,7 +7,7 @@ namespace Zork.Common
     {
         public string Name { get; }
 
-        public string Description { get; set; }
+        public string LookDescription { get; set; }
 
         [JsonIgnore]
         public Dictionary<Directions, Room> Neighbors { get; private set; }
@@ -24,7 +24,7 @@ namespace Zork.Common
         public Room(string name, string description, Dictionary<Directions, string> neighborNames, string[] inventoryNames)
         {
             Name = name;
-            Description = description;
+            LookDescription = description;
             NeighborNames = neighborNames ?? new Dictionary<Directions, string>();
             InventoryNames = inventoryNames ?? new string[0];
         }

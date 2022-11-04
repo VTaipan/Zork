@@ -17,6 +17,8 @@
         Drop,
         Inventory,
         I = Inventory,
+        Moves,
+        m = Moves,
         Unknown
     }
 }

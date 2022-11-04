@@ -51,7 +51,6 @@ C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.GeneratedMSBui
 C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.AssemblyInfoInputs.cache
 C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.AssemblyInfo.cs
 C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.csproj.CoreCompileInputs.cache
-C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.csproj.CopyComplete
 C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.dll
 C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.pdb
 C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.genruntimeconfig.cache
@@ -74,3 +73,4 @@ C:\Users\ka081051\source\repos\Zork\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.C
 C:\Users\ka081051\source\repos\Zork\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.dll
 C:\Users\ka081051\source\repos\Zork\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.pdb
 C:\Users\ka081051\source\repos\Zork\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.genruntimeconfig.cache
+C:\School\DIG_4778\Zork\Zork.Cli\obj\Debug\netcoreapp3.1\Zork.Cli.csproj.CopyComplete
