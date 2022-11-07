@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Zork.Common
 {
@@ -128,6 +127,10 @@ namespace Zork.Common
                         Player.Inventory.Remove(itemToDrop);
                         outputString = $"You have dropped the {itemToDrop}.";
                     }
+                    break;
+
+                case Commands.Moves:
+
                     break;
 
                 case Commands.Inventory:

@@ -31,16 +31,6 @@ namespace Zork.Common
 
         public List<Item> Inventory { get; }
 
-        //void AddToInventory(Item itemToAdd)
-        //{
-
-        //}
-
-        //void RemoveFromInventory(Item itemToAdd)
-        //{
-
-        //}
-
         public Player(World world, string startingLocation)
         {
             _world = world;

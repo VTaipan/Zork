@@ -16,7 +16,7 @@ namespace Zork.Cli
             var input = new ConsoleInputService();
             var output = new ConsoleOutputService();
 
-            //game.Player.MovesChanged += Player_MovesChanged; 
+            game.Player.MovesChanged += Player_MovesChanged; 
 
             Console.WriteLine("Welcome to Zork!");
             game.Run(input, output);
@@ -34,10 +34,10 @@ namespace Zork.Cli
             Console.WriteLine("Finished.");
         }
 
-        //private static void Player_MovesChanged(object sender, int moves) //change to a command later, it appearing every action is annoying
-        //{
-        //    Console.WriteLine($"You've made {moves} moves.");
-        //}
+        private static void Player_MovesChanged(object sender, int moves) //change to a command later, it appearing every action is annoying
+        {
+            Console.WriteLine($"You've made {moves} moves.");
+        }
 
         private enum CommandLineArguments
         {
