@@ -6,7 +6,6 @@ Zork.Cli/bin/
 Zork.Unity/Library
 Zork.Unity/Logs
 Zork.Unity/Temp
-Zork.Unity/
 Zork.Unity/.vsconfig
 Zork.Unity/*.sln
 Zork.Unity/*.csproj
