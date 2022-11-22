@@ -3,8 +3,6 @@ using Zork.Common;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using System.Collections;
 
 public class UnityOutputService : MonoBehaviour, IOutputService
 {

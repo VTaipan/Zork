@@ -19,7 +19,6 @@ public class UnityInputService : MonoBehaviour, IInputService
         }
 
         InputField.text = "";
-        //InputField.text = InputField.text.Replace("\r", "");
     }
 
     public void SetFocus()

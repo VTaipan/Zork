@@ -35,20 +35,22 @@ public class GameManager : MonoBehaviour
         LocationText.text = location.Name;
     }
 
-    private void Player_ScoreChange(object sender, Player _score)
-    {
-        ScoreText.text = _score.Score.ToString();
-    }
+    //private void Player_ScoreChange(object sender, Player _score)
+    //{
+    //    ScoreText.text = "Score: " + _score.Score.ToString();
+    //}
 
-    private void Player_MoveChange(object sender, Player _moves)
-    {
-        MovesText.text = _moves.Moves.ToString();
-    }
+    //private void Player_MoveChange(object sender, Player _moves)
+    //{
+    //        MovesText.text = "Moves: " + _moves.Moves.ToString();
+    //}
 
     private void Start()
     {
         InputService.SetFocus();
         LocationText.text = _game.Player.CurrentRoom.Name;
+        ScoreText.text = "Score: 0";
+        MovesText.text = "Moves: 0";
     }
 
     void Update()
