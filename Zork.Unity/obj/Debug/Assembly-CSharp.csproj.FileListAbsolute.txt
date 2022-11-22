@@ -1,0 +1,2 @@
+C:\School\DIG_4778\Zork\Zork.Unity\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+C:\School\DIG_4778\Zork\Zork.Unity\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

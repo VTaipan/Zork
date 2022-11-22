@@ -20,6 +20,11 @@
         Drop,
         Inventory,
         I = Inventory,
+        Reward,
+        R = Reward,
+        Moves,
+        M = Moves,
+        Score,
         Unknown
     }
 }

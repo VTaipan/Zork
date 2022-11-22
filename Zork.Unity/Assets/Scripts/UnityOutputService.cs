@@ -3,6 +3,8 @@ using Zork.Common;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using System.Collections;
 
 public class UnityOutputService : MonoBehaviour, IOutputService
 {
@@ -14,6 +16,10 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     [SerializeField]
     private Transform ContentTransform;
+
+    [SerializeField]
+    [Range(0, 100)]
+    private int MaxEntries;
 
     public void Write(object obj) => ParseandWriteLine(obj.ToString());
 
@@ -29,10 +35,14 @@ public class UnityOutputService : MonoBehaviour, IOutputService
 
     private void ParseandWriteLine(string message)
     {
+        //if (_entries.Count >= MaxEntries)
+        //{
+        //    _entries.Dequeue();
+        //}
         var textLine = Instantiate(TextLinePrefab, ContentTransform);
         textLine.text = message;
-        _entries.Add(textLine.gameObject);
+        _entries.Enqueue(textLine.gameObject);
     }
 
-    private List<GameObject> _entries = new List<GameObject>();
+    private Queue<GameObject> _entries = new Queue<GameObject>();
 }

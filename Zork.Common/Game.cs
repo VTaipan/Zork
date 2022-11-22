@@ -117,6 +117,18 @@ namespace Zork.Common
                     }
                     break;
 
+                case Commands.Moves:
+                    Output.WriteLine(Player.Moves);
+                    break;
+
+                case Commands.Reward:
+                    Player.Score++;
+                    break;
+
+                case Commands.Score:
+                    Output.WriteLine(Player.Score);
+                    break;
+
                 default:
                     Output.WriteLine("Unknown command.");
                     break;
@@ -128,6 +140,11 @@ namespace Zork.Common
             }
 
             Output.WriteLine($"\n{Player.CurrentRoom}");
+
+            if (command != Commands.Unknown)
+            {
+                Player.Moves++;
+            }
         }
         
         private void Look()
