@@ -141,7 +141,7 @@ namespace Zork.Common
 
             Output.WriteLine($"\n{Player.CurrentRoom}");
 
-            if (command != Commands.Unknown)
+            if (command != Commands.Unknown && command != Commands.Reward)
             {
                 Player.Moves++;
             }
