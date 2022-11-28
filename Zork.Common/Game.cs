@@ -22,11 +22,10 @@ namespace Zork.Common
         [JsonIgnore]
         public bool IsRunning { get; private set; }
 
-        public Game(World world, string startingLocation, string enemyLocation)
+        public Game(World world, string startingLocation)
         {
             World = world;
             Player = new Player(World, startingLocation);
-            Enemy = new Enemy(World, enemyLocation);
         }
 
         public void Run(IInputService input, IOutputService output)
@@ -163,6 +162,10 @@ namespace Zork.Common
             foreach (Item item in Player.CurrentRoom.Inventory)
             {
                 Output.WriteLine(item.LookDescription);
+            }
+            foreach (Enemy enemy in Player.CurrentRoom.Enemies)
+            {
+                Output.WriteLine(enemy.LookDescription);
             }
         }
 

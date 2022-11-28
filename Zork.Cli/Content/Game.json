@@ -1,11 +1,11 @@
 {
   "StartingLocation": "West of House",
-  "EnemyLocation":  "Forest 1",
   "World": {
     "Enemies": [
       {
         "Name": "Troll",
-        "LookDescription": ""
+        "LookDescription": "big guy",
+        "EnemyHP": 3
       }
     ],
     "Items": [
@@ -72,7 +72,10 @@
         "NeighborNames": {
           "South": "Forest 3",
           "East": "West of House"
-        }
+        },
+        "EnemyNames": [
+          "Troll"
+        ]
       },
       {
         "Name": "Forest 2",

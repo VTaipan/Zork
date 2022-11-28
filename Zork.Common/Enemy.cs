@@ -1,4 +1,6 @@
-﻿namespace Zork.Common
+﻿using System;
+
+namespace Zork.Common
 {
     public class Enemy
     {
@@ -6,18 +8,15 @@
 
         public string LookDescription { get; }
 
-        public string EnemyLocation { get; }
+        public int EnemyHP { get; }
 
-        public Enemy(string name, string lookDescription, World world, string enemyLocation)
+        public Enemy(string name, string lookDescription, int enemyHP)
         {
-            _world = world;
             Name = name;
             LookDescription = lookDescription;
-            EnemyLocation = enemyLocation;
+            EnemyHP = enemyHP;
         }
 
-        private readonly World _world;
-        private string enemyLocation;
         public override string ToString() => Name;
     }
 }

@@ -53,6 +53,7 @@ namespace Zork.Common
             {
                 room.UpdateNeighbors(this);
                 room.UpdateInventory(this);
+                room.UpdateEnemies(this);
             }
         }
 
