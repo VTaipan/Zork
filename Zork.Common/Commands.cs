@@ -25,6 +25,7 @@
         Moves,
         M = Moves,
         Score,
+        Attack,
         Unknown
     }
 }

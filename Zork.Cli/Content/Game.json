@@ -1,6 +1,13 @@
 {
   "StartingLocation": "West of House",
+  "EnemyLocation":  "Forest 1",
   "World": {
+    "Enemies": [
+      {
+        "Name": "Troll",
+        "LookDescription": ""
+      }
+    ],
     "Items": [
       {
         "Name": "Mat",

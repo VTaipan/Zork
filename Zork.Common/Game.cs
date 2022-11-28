@@ -11,6 +11,8 @@ namespace Zork.Common
         [JsonIgnore]
         public Player Player { get; }
 
+        public Enemy Enemy { get; }
+
         [JsonIgnore]
         public IInputService Input { get; private set; }
 
@@ -20,10 +22,11 @@ namespace Zork.Common
         [JsonIgnore]
         public bool IsRunning { get; private set; }
 
-        public Game(World world, string startingLocation)
+        public Game(World world, string startingLocation, string enemyLocation)
         {
             World = world;
             Player = new Player(World, startingLocation);
+            Enemy = new Enemy(World, enemyLocation);
         }
 
         public void Run(IInputService input, IOutputService output)
@@ -45,6 +48,8 @@ namespace Zork.Common
 
             string verb;
             string subject = null;
+            string preposition;
+            string enemy;
             if (commandTokens.Length == 0)
             {
                 return;
@@ -57,6 +62,8 @@ namespace Zork.Common
             {
                 verb = commandTokens[0];
                 subject = commandTokens[1];
+                preposition = commandTokens[2];
+                enemy = commandTokens[3];
             }
 
             Room previousRoom = Player.CurrentRoom;
@@ -127,6 +134,9 @@ namespace Zork.Common
 
                 case Commands.Score:
                     Output.WriteLine(Player.Score);
+                    break;
+
+                case Commands.Attack:
                     break;
 
                 default:

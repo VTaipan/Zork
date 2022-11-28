@@ -17,7 +17,12 @@ namespace Zork.Common
         [JsonIgnore]
         public IReadOnlyDictionary<string, Item> ItemsByName => _itemsByName;
 
-        public World(Room[] rooms, Item[] items)
+        public Enemy[] Enemies { get; }
+
+        [JsonIgnore]
+        public IReadOnlyDictionary<string, Enemy> EnemiesByName => _enemiesByName;
+
+        public World(Room[] rooms, Item[] items, Enemy[] enemies)
         {
             Rooms = rooms;
             _roomsByName = new Dictionary<string, Room>(StringComparer.OrdinalIgnoreCase);
@@ -31,6 +36,13 @@ namespace Zork.Common
             foreach (Item item in Items)
             {
                 _itemsByName.Add(item.Name, item);
+            }
+
+            Enemies = enemies;
+            _enemiesByName = new Dictionary<string, Enemy>(StringComparer.OrdinalIgnoreCase);
+            foreach (Enemy enemy in Enemies)
+            {
+                _enemiesByName.Add(enemy.Name, enemy);
             }
         }
 
@@ -46,5 +58,6 @@ namespace Zork.Common
 
         private readonly Dictionary<string, Room> _roomsByName;
         private readonly Dictionary<string, Item> _itemsByName;
+        private readonly Dictionary<string, Enemy> _enemiesByName;
     }
 }
