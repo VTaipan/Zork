@@ -4,8 +4,21 @@
     "Enemies": [
       {
         "Name": "Troll",
-        "LookDescription": "big guy",
-        "EnemyHP": 3
+        "LookDescription": "A grisly and grotesque troll stands there menacingly.",
+        "EnemyHP": 3,
+        "EnemyState": "Alive"
+      },
+      {
+        "Name": "Goblin",
+        "LookDescription": "A miniscule green goblin is picking up sticks and whistling a tune. It seems friendly.",
+        "EnemyHP": 1,
+        "EnemyState": "Alive"
+      },
+      {
+        "Name": "Minotaur",
+        "LookDescription": "A massive mighty minotaur stands before you. It snarls aggressively.",
+        "EnemyHP": 5,
+        "EnemyState": "Alive"
       }
     ],
     "Items": [
@@ -23,6 +36,13 @@
         "Name": "Leaves",
         "LookDescription": "There is a pile of leaves here.",
         "InventoryDescription": "A pile of leaves."
+      },
+      {
+        "Name": "Hammer",
+        "LookDescription": "There is a hammer laying here, probably the same one used to board up the door. It has a wooden handle and metal head.",
+        "InventoryDescription": "A hammer with a wooden handle and metal head.",
+        "Type": "Weapon",
+        "Damage":  2
       }
     ],
     "Rooms": [
@@ -36,7 +56,8 @@
         },
         "InventoryNames": [
           "Mat",
-          "Mailbox"
+          "Mailbox",
+          "Hammer"
         ]
       },
       {
@@ -83,7 +104,11 @@
         "NeighborNames": {
           "South": "Clearing",
           "East": "Clearing"
-        }
+        },
+        "EnemyNames": [
+          "Goblin",
+          "Minotaur"
+        ]
       },
       {
         "Name": "Forest 3",

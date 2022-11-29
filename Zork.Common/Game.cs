@@ -47,8 +47,8 @@ namespace Zork.Common
 
             string verb;
             string subject = null;
-            string preposition;
-            string enemy;
+            string preposition = null;
+            string weapon = null;
             if (commandTokens.Length == 0)
             {
                 return;
@@ -57,12 +57,21 @@ namespace Zork.Common
             {
                 verb = commandTokens[0];
             }
+            else if (commandTokens.Length == 2)
+            {
+                verb = commandTokens[0];
+                subject = commandTokens[1];
+            }
+            else if (commandTokens.Length == 3)
+            {
+                return;
+            }
             else
             {
                 verb = commandTokens[0];
                 subject = commandTokens[1];
                 preposition = commandTokens[2];
-                enemy = commandTokens[3];
+                weapon = commandTokens[3];
             }
 
             Room previousRoom = Player.CurrentRoom;
@@ -136,6 +145,22 @@ namespace Zork.Common
                     break;
 
                 case Commands.Attack:
+                    if (string.IsNullOrEmpty(subject))
+                    {
+                        Output.WriteLine("This command requires a subject.");
+                    }
+                    else if (string.IsNullOrEmpty(preposition))
+                    {
+                        Output.WriteLine("This command requires a preposition.");
+                    }
+                    else if (string.IsNullOrEmpty(weapon))
+                    {
+                        Output.WriteLine("This command requires a weapon.");
+                    }
+                    else
+                    {
+                        Attack(subject, weapon);
+                    }
                     break;
 
                 default:
@@ -156,6 +181,41 @@ namespace Zork.Common
             }
         }
         
+        private void Attack(string enemyName, string weaponName)
+        {
+            Enemy enemyToAttack = Player.CurrentRoom.Enemies.FirstOrDefault(enemy => string.Compare(enemy.Name, enemyName, ignoreCase: true) == 0);
+            Item weaponUsed = Player.Inventory.FirstOrDefault(item => string.Compare(item.Name, weaponName, ignoreCase: true) == 0);
+            if (enemyToAttack.EnemyHP <= 0)
+            {
+                Output.WriteLine("Its already dead, you monster.");
+            }
+            else if (enemyToAttack.EnemyHP > 0)
+            {
+                if (enemyToAttack == null || weaponUsed == null)
+                {
+                    Output.WriteLine("Invalid command.");
+                }
+                else if (weaponUsed.Type != "Weapon")
+                {
+                    Output.WriteLine("This would do nothing.");
+                }
+                else
+                {
+                    enemyToAttack.EnemyHP = enemyToAttack.EnemyHP - weaponUsed.Damage;
+                    if (enemyToAttack.EnemyHP <= 0)
+                    {
+                        enemyToAttack.LookDescription = $"The {enemyToAttack} is dead.";
+                        Output.WriteLine($"You killed the {enemyToAttack} with the {weaponName}.");
+                        enemyToAttack.EnemyState = "Dead";
+                    }
+                    else
+                    {
+                        Output.WriteLine($"You hit the {enemyName}! \nYou have done {weaponUsed.Damage} damage to the {enemyName}!");
+                    }
+                }
+            }
+        }
+
         private void Look()
         {
             Output.WriteLine(Player.CurrentRoom.Description);
@@ -165,7 +225,15 @@ namespace Zork.Common
             }
             foreach (Enemy enemy in Player.CurrentRoom.Enemies)
             {
-                Output.WriteLine(enemy.LookDescription);
+                if (enemy.EnemyState == "Alive")
+                {
+                    Output.WriteLine(enemy.LookDescription);
+                }
+                else if (enemy.EnemyState == "Dead")
+                {
+                    enemy.LookDescription = $"The {enemy.Name} is laying there, motionless.";
+                    Output.WriteLine(enemy.LookDescription);
+                }
             }
         }
 
@@ -174,7 +242,7 @@ namespace Zork.Common
             Item itemToTake = Player.CurrentRoom.Inventory.FirstOrDefault(item => string.Compare(item.Name, itemName, ignoreCase: true) == 0);
             if (itemToTake == null)
             {
-                Console.WriteLine("You can't see any such thing.");                
+                Output.WriteLine("You can't see any such thing.");                
             }
             else
             {
