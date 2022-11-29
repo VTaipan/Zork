@@ -42,7 +42,14 @@
         "LookDescription": "There is a hammer laying here, probably the same one used to board up the door. It has a wooden handle and metal head.",
         "InventoryDescription": "A hammer with a wooden handle and metal head.",
         "Type": "Weapon",
-        "Damage":  2
+        "Damage": 2
+      },
+      {
+        "Name": "Longsword",
+        "LookDescription": "There is a longsword wedged in a tree. It gleams in the light, its edge sharp.",
+        "InventoryDescription": "A sharp longsword with a leather grip.",
+        "Type": "Weapon",
+        "Damage": 6
       }
     ],
     "Rooms": [
@@ -74,7 +81,8 @@
         "Description": "You are facing the south side of a white house. There is no door here, and all the windows are barred.",
         "NeighborNames": {
           "East": "Behind House",
-          "West": "West of House"
+          "West": "West of House",
+          "South":  "Forest 3"
         }
       },
       {
@@ -116,7 +124,10 @@
         "NeighborNames": {
           "North": "South of House",
           "East": "Clearing"
-        }
+        },
+        "InventoryNames": [
+          "Longsword"
+        ]
       },
       {
         "Name": "Clearing",
